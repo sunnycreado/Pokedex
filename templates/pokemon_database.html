@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="utf-8">
+<title>PokeDex</title>
+
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700"> -->
+<!-- https://fonts.google.com/specimen/Roboto -->
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel = "icon" href = "/static/images/pokeball.png" type = "image/x-icon">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
+<link rel="stylesheet" type="text/css" href="/static/styles/pokedex-style.css">
+<meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+
+
+</head>
+
+<body>
+
+<!-- This is the pokedex UI -->
+
+<div class="main-logo">
+
+    <img class="picture" src="/static/images/pokemon-logo.png" class="card__image" alt="" />
+  
+  </div> 
+<h1 id="heading"></h1>
+<h2 >Generations</h2>
+<div class="button-container">
+<button id="left-btn"><i class="fas fa-caret-left"></i></i></button>
+<div class="pagination current-page">1</div>
+<div class="pagination">2</div>
+<div class="pagination">3</div>
+<div class="pagination">4</div>
+<div class="pagination">5</div>
+<div class="pagination">6</div>
+<button id="right-btn"><i class="fas fa-caret-right"></i></button>
+</div>
+<div class="pokemon-container"></div>
+
+</body>
+
+<script src="/static/js/app.js"></script>
+
+<!-- This is nav bar     -->
+
+<nav>
+    <ul>
+        <li>
+            <a href="home.html" class="logo">
+                
+                <img src="/static/images/pokeball.png" alt="" width="60" height="60">
+                <span class="nav-item">PokeDex</span>
+            </a>
+        </li>
+        <li>
+            <a href="home.html">
+                <i class="fa fa-home " aria-hidden="true"></i>
+                <span class="nav-item">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="legendary_checker.html">
+                <i class="fa fa-check-square " aria-hidden="true"></i>
+                <span class="nav-item">Legendary Checker</span>
+            </a>
+        </li>
+        <li>
+            <a href="pokemon_database.html">
+                <i class="fa fa-id-badge " aria-hidden="true"></i>
+                <span class="nav-item">Pokemon Database</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="pokemon_comparator.html">
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+                <span class="nav-item">Pokemon Comparator</span>
+            </a>
+        </li>
+
+
+    </ul>
+</nav> 
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

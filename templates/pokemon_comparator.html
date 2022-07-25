@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="utf-8">
+<title>PokeDex</title>
+
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700"> -->
+<!-- https://fonts.google.com/specimen/Roboto -->
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel = "icon" href = "/static/images/pokeball.png" type = "image/x-icon">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
+<link rel="stylesheet" type="text/css" href="/static/styles/comparator.css">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+
+    <div class="main-logo">
+
+        <img class="picture" src="/static/images/pokemon-logo.png" class="card__image" alt="" />
+        
+    </div> 
+
+    <div class="custom-model-main">
+        <div class="custom-model-inner">        
+        <div class="close-btn">×</div>
+            <div class="custom-model-wrap">
+                <canvas id="myChart" style="display: block; height: 200px; width: 400x;"></canvas>
+            </div>  
+        </div>  
+        <div class="bg-overlay"></div>
+    </div> 
+        
+
+        <div class="submit_container">
+            <div class="submit-box">
+                <div class="submit-title">
+                    <button type="button" id='submit-button' onClick="getdd1()" ></button>
+                    <!-- <input type="submit" id='submit-button'> -->
+                    <div class="submit-text">
+                    Search
+                  </div>
+                </div>
+                
+            </div>
+            <div class="submit-box1">
+                <div class="submit-title">
+                  <button type="button" class='submit-button1' onClick="getdd2()" >
+                  </button>
+                  <!-- <input type="submit" id='submit-button'> -->
+                  <div class="submit-text">
+                    Compare
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+
+       
+
+        <div class="search_container">
+            <div class="search_box1">
+                <input type="text" id="search1" name="poke_search1" onchange="getdd1()" >
+            </div>
+            <div class="search_box2">
+                <input type="text" id="search2" name="poke_search2" onchange="getdd1()">
+            </div>
+        </div>
+
+        <div class="main_card">
+            <div id="card">
+                <div class="card_front">
+                    <div id="result_name"> Ivysaur </div>
+                    <img id="result_pic" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png">
+                    <div class="circle"></div>
+                    <div id="stat_header"> Stats </div>
+                    <div id="stats_box">
+                        <div id="result_box">
+                            <div id="stat_title">HP</div>
+                            <div id="result_hp">0</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Speed</div>
+                            <div id="result_speed">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Attack</div>
+                            <div id="result_attack">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sp.Attack</div>
+                            <div id="result_special_attack">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Defense</div>
+                            <div id="result_defense">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sp.Defense</div>
+                            <div id="result_special_defense">60</div>
+                        </div>                  
+                    </div>
+                    <div id="stat_header"> Type </div>
+    
+                    <div id="stats_box1">
+                        <div id="result_box">
+                            <div id="stat_title">Type</div>
+                            <div id="result_type">Grass</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sub-Type</div>
+                            <div id="result_subtype">Poison</div>
+                        </div>
+
+                              
+                    </div>
+    
+    
+    
+                    <div id="stats_special_box"></div>
+                    
+                    
+                </div>
+                
+                
+            </div>
+
+            
+
+            <div id="card1">
+                <div class="card_front">
+                    <div id="result_name1"> Ivysaur </div>
+                    <img id="result_pic1" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png">
+                    <div class="circle"></div>
+                    <div id="stat_header"> Stats </div>
+                    <div id="stats_box">
+                        <div id="result_box">
+                            <div id="stat_title">HP</div>
+                            <div id="result_hp1">0</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Speed</div>
+                            <div id="result_speed1">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Attack</div>
+                            <div id="result_attack1">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sp.Attack</div>
+                            <div id="result_special_attack1">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Defense</div>
+                            <div id="result_defense1">60</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sp.Defense</div>
+                            <div id="result_special_defense1">60</div>
+                        </div>                  
+                    </div>
+                    <div id="stat_header"> Type </div>
+    
+                    <div id="stats_box1">
+                        <div id="result_box">
+                            <div id="stat_title">Type</div>
+                            <div id="result_type1">Grass</div>
+                        </div>
+                        <div id="result_box">
+                            <div id="stat_title">Sub-Type</div>
+                            <div id="result_subtype1">Poison</div>
+                        </div>
+
+                              
+                    </div>
+    
+    
+    
+                    <div id="stats_special_box"></div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+        
+
+        
+        
+       
+    </body>
+    <script src="/static/js/compare.js"></script>   
+
+
+
+  
+
+<!-- This is nav bar     -->
+
+<nav>
+    <ul>
+        <li>
+            <a href="home.html" class="logo">
+                
+                <img src="/static/images/pokeball.png" alt="" width="60" height="60">
+                <span class="nav-item">PokeDex</span>
+            </a>
+        </li>
+        <li>
+            <a href="home.html">
+                <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                <span class="nav-item">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="legendary_checker.html">
+                <i class="fa fa-check-square fa-4x" aria-hidden="true"></i>
+                <span class="nav-item">Legendary Checker</span>
+            </a>
+        </li>
+        <li>
+            <a href="pokemon_database.html">
+                <i class="fa fa-id-badge fa-4x" aria-hidden="true"></i>
+                <span class="nav-item">Pokemon Database</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="pokemon_comparator.html">
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+                <span class="nav-item">Pokemon Comparator</span>
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

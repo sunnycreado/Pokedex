@@ -1,0 +1,255 @@
+/* this is main logo */
+.main-logo{
+  display: flex;
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-left: 50px;
+}
+.picture{
+  
+  width: 600px;
+  height: 221px;
+  margin: 0 auto;
+  
+}
+/* This is home navbar */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+
+}
+
+body {
+  
+
+  
+  background: linear-gradient(to right, #ffffff, #b6fda9);
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  background: #211a30;
+  width: 90px;
+  overflow: hidden;
+  transition: width 0.2s linear;
+  box-shadow: 0 20px 35px rgba(0,0 ,0 , 0.1);
+}
+
+.logo{
+  text-align: center;
+  display:flex;
+ transition: all 0.5% ease ;
+ margin: 10px 0 0 10px;
+}
+
+.logo img{
+  
+  margin: 10px 0 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+
+}
+
+.logo span{
+  font-weight: bold;
+  /* padding: 15px; */
+  font-family: 'Poppins';
+  font-size :28px; 
+  text-transform: uppercase;
+  padding: 10px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+a{
+  position: relative;
+  color:#706d7a ;
+  font-size: 14px;
+  display: table;
+  width: 300px;
+  padding:10px
+}
+
+.fa{
+  position: relative;
+  text-decoration: none;
+  top:10px;
+  width: 70px;
+  height: 50px;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.nav-item{
+  position: relative;
+  font-size: 15px;
+  left: 15px;
+  top:9px;
+  font-weight: bold;
+  font-family: 'Poppins';
+}
+
+a:hover{
+  background-color: #38314c;
+  color:#e6e7e7
+  ;
+
+}
+
+nav:hover{
+  width: 300px;
+
+  transition: all 0.5s ease;
+
+
+} 
+
+
+/* interactive card */
+
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+  }
+
+
+  
+  .home_cards {
+    box-sizing: border-box;
+    padding: 5rem 6vw 0 12vw;
+  }
+
+  
+
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap:-100rem;
+    
+    padding: 0;
+    list-style-type: none;
+    
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+    background: #3363af;  
+    margin-left: auto;
+    margin-right: auto;    
+  }
+  .card:hover{
+    background-color: #fecc00;
+  }
+  
+  .card__image {      
+    width: 100%;
+    height: auto;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;      
+    border-radius: calc(var(--curve) * 1px);    
+    background-color: var(--surface-color);      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+    transform: translateY(0);
+    
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #636768;
+    font-family: 'Poppins';
+    
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: 'Poppins';  
+    font-size: .8em; 
+    color: #51686a;  
+  }
+  
+
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #636768;
+    font-family: 'Poppins';  
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }    
+
+
+
+
+  /* this is pokedex database */
+
+  
+
+  

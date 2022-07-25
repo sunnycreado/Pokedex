@@ -1,0 +1,501 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex</title>
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/static/styles/legendary.css">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel = "icon" href = "/static/images/pokeball.png" type = "image/x-icon">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+        
+        
+        <!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
+
+
+        
+    </head>
+    <body>
+
+      <!-- this is interactive background -->
+      <div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
+
+
+
+
+
+
+
+      <!-- this is home logo -->
+      <div class="context">
+
+        
+
+        <!-- this is legendary Checker -->
+        
+  
+        <div class="row">
+          <div class="col-md-12">
+            <form action="/legendary_output" method="post" >
+              <div class="main-logo">
+
+                <img class="picture" src="/static/images/pokemon-logo.png" class="card__image" alt="" />
+              
+              </div> 
+              <h1> Legendary Checker </h1>
+
+              <div class="main1">
+                <div class="name-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Name
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="text" class="input-text" name="poke_name">
+                  </div>
+                </div>
+          
+          
+   
+              </div>
+
+              <div class="main3">
+
+                <div class="name-box1">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Generation
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <div class="formRight">
+                  
+                      <select id="leadType1" class="box2" name="Generation">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                      </select>
+                  </div>
+                  </div>
+                </div>
+
+                <div class="name-box1">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Type
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <div class="formRight">
+                  
+                      <select id="leadType2" class="box2" name="Type">
+                        <option value="Grass">Grass</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Water">Water</option>
+                        <option value="Bug">Bug</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Poison">Poison</option>
+                        <option value="Electric">Electric</option>
+                        <option value="Ground">Ground</option>
+                        <option value="Fairy">Fairy</option>
+                        <option value="Fighting">Fighting</option>
+                        <option value="Psychic">Psychic</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Ghost">Ghost</option>
+                        <option value="Ice">Ice</option>
+                        <option value="Dragon">Dragon</option>
+                        <option value="Dark">Dark</option>
+                        <option value="Steel">Steel</option>
+                        <option value="Flying">Flying</option>
+                      </select>
+                  </div>
+                  </div>
+                </div>
+  
+                <div class="name-box1">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Sub-Type
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <div class="formRight">
+                  
+                      <select id="leadType" class="box2" name="SubType">
+                        <option value="(main)">(main)</option>
+                        <option value="Flying">Flying</option>
+                        <option value="Ground">Ground</option>
+                        <option value="Poison">Poison</option>
+                        <option value="Psychic">Psychic</option>
+                        <option value="Fighting">Fighting</option>
+                        <option value="Grass">Grass</option>
+                        <option value="Fairy">Fairy</option>
+                        <option value="Steel">Steel</option>
+                        <option value="Dark">Dark</option>
+                        <option value="Dragon">Dragon</option>
+                        <option value="Ice">Ice</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Water">Water</option>
+                        <option value="Ghost">Ghost</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Electric">Electric</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Bug">Bug</option>
+                      </select>
+                  </div>
+                  </div>
+                </div>
+
+                
+                
+    
+              </div>
+
+              <div class="gen_gap">
+                  
+              </div>
+  
+              <div class="main3">
+  
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      HP
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="HP">
+                  </div>
+                </div>
+  
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Attack
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="Attack">
+                  </div>
+                </div>
+
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Defense
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="Defense">
+                  </div>
+                </div>
+                
+    
+              </div>
+  
+              <div class="main3">
+  
+
+  
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Sp. Attack
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="Sp_Attack">
+                  </div>
+                </div>
+
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Sp. Defense
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="Sp_Defense">
+                  </div>
+                </div>
+  
+                <div class="hp-box">
+                  <div class="input-title">
+                    <div class="title-text">
+                      Speed
+                    </div>
+                  </div>
+                  <div class="input-main">
+                    <input type="number" class="input-text" name="Speed">
+                  </div>
+                </div>
+    
+              </div>
+  
+              
+  
+  
+
+
+              <div class="main5">
+                <div class="submit-box">
+                  <div class="submit-title">
+                    <input type="submit" class='submit-button'>
+                    <div class="submit-text">
+                      
+                      Submit
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              
+
+  
+              
+  
+              
+  
+        </div>
+      </div>
+
+      <!-- this is nav bar -->
+      <!-- This is nav bar     -->
+
+      <nav>
+        <ul>
+            <li>
+                <a href="home.html" class="logo">
+                    
+                    <img src="/static/images/pokeball.png" alt="" width="60" height="60">
+                    <span class="nav-item">PokeDex</span>
+                </a>
+            </li>
+            <li>
+                <a href="home.html">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                    <span class="nav-item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="legendary_checker.html">
+                    <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
+                    <span class="nav-item">Legendary Checker</span>
+                </a>
+            </li>
+            <li>
+                <a href="pokemon_database.html">
+                    <i class="fa fa-id-badge fa-2x" aria-hidden="true"></i>
+                    <span class="nav-item">Pokemon Database</span>
+                </a>
+            </li>
+    
+            <li>
+                <a href="pokemon_comparator.html">
+                    <i class="fa fa-trophy fa-2x" aria-hidden="true"></i>
+                    <span class="nav-item">Pokemon Comparator</span>
+                </a>
+            </li>
+    
+
+        </ul>
+    </nav>
+
+    <div class="results">
+      <a href="#overlay" id="open-overlay">Results</a>
+    </div>
+
+
+
+    <!-- this is results -->
+
+<div id="overlay">
+
+  
+  <div class="close-btn">×</div>
+  <div class="main_card">
+    <div class="card">
+
+
+        <div class="result_selector">
+            <form name="formid" >
+                <select id="form_selector" name="dd1select" onchange="getdd1()">
+                  <option></option>
+                  {% for op in optionlist %}
+                  <option value={{op}}>{{op}}</option>
+                  {% endfor %}
+                  
+                </select>
+              </form>
+        </div>
+        
+
+
+
+        <div class="card_front">
+            <div id="result_name"> Ivysaur </div>
+            <img id="result_pic" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png">
+            <div class="circle"></div>
+            <div id="stat_header"> Stats </div>
+            <div id="stats_box">
+                <div id="result_box">
+                    <div id="stat_title">HP</div>
+                    <div id="result_hp">60</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Speed</div>
+                    <div id="result_speed">60</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Attack</div>
+                    <div id="result_attack">62</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Sp.Attack</div>
+                    <div id="result_special_attack">80</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Defense</div>
+                    <div id="result_defense">62</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Sp.Defense</div>
+                    <div id="result_special_defense">80</div>
+                </div>                  
+            </div>
+
+            <div id="stats_box1">
+                <div id="result_box">
+                    <div id="stat_title">Type</div>
+                    <div id="result_type">Grass</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Sub-Type</div>
+                    <div id="result_subtype">Poison</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Generation</div>
+                    <div id="result_gen">1</div>
+                </div>
+                <div id="result_box">
+                    <div id="stat_title">Legendary</div>
+                    <div id="result_legend">No</div>
+                </div>
+                      
+            </div>
+
+
+
+            <div id="stats_special_box"></div>
+            
+            
+        </div>
+        
+        
+    </div>
+
+    <div class="card1">
+        <div class="card_front">
+            <table class="fl-table">
+                <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Confidence</th>
+                </tr>
+                </thead>
+                <tbody id="mytable-body">
+
+                </tbody>
+            </table>
+            <script>
+                // var array ={"1":1,"2":2,"3":3,"4":4,"5":5,"6":6}
+
+                // maketable(array)
+
+                // function maketable(data){
+                //     var table=document.getElementById('mytable')
+                //     for(var i=0;i<data.length;i++){
+                //         console.log[data[i]]
+                //         var row=`<tr>
+                //                     <td>1</td>
+                //                 </tr>`
+                //         table.innerHTML+=row
+                //     }
+                // }
+
+
+                var array = {"1":1},
+                    tr;
+
+                for ((key, value) in array) {
+                    var td = document.createElement('td');
+                    var td1 = document.createElement('td');
+                    if (!(value % 1)) {
+                        tr = document.createElement('tr');
+                        document.getElementById('mytable').appendChild(tr);
+                        
+                    }
+                    td.appendChild(document.createTextNode(key));
+                    td1.appendChild(document.createTextNode(i));
+                    tr.appendChild(td);
+                    tr.appendChild(td1);
+//Do stuff where key would be 0 and value would be the object
+                    }
+
+
+
+
+            </script>
+        </div>
+    </div>
+</div>
+
+</div>
+<div id="mask" onclick="document.location='#';"></div> <!-- the only javascript -->
+
+ 
+<script src="/static/js/legendary.js"></script>   
+      
+    </body>
+
+    <script>
+      
+    var parsed = {{prediction|safe}};
+      
+      // var parsed1= JSON.parse({{prediction}})
+    </script>
+
+    <script>
+        var text = "{{condition}}";
+
+        if(text=="False"){
+          swal("{{predictions}}", "", "error");
+
+        }
+        if(text=="True")
+        {
+          swal("{{predictions}}", "", "success");
+        }
+    </script>
+
+</html>
