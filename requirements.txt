@@ -1,4 +1,5 @@
 Flask==2.1.2
 pandas==1.4.2
 gunicorn
+sklearn==0.0
 
