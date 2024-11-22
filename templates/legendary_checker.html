@@ -1,501 +1,235 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pokedex</title>
-        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/static/styles/legendary.css">
-        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-        <link rel = "icon" href = "/static/images/pokeball.png" type = "image/x-icon">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-        
-        
-        <!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
+{% extends "base.html" %}
 
+{% block title %}PokeDex - Legendary Checker{% endblock %}
 
-        
-    </head>
-    <body>
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/common.css">
+<link rel="stylesheet" type="text/css" href="/static/styles/legendary.css">
+{% endblock %}
 
-      <!-- this is interactive background -->
-      <div class="area" >
-        <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-        </ul>
-</div >
-
-
-
-
-
-
-
-      <!-- this is home logo -->
-      <div class="context">
-
-        
-
-        <!-- this is legendary Checker -->
-        
-  
-        <div class="row">
-          <div class="col-md-12">
-            <form action="/legendary_output" method="post" >
-              <div class="main-logo">
-
-                <img class="picture" src="/static/images/pokemon-logo.png" class="card__image" alt="" />
-              
-              </div> 
-              <h1> Legendary Checker </h1>
-
-              <div class="main1">
-                <div class="name-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Name
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="text" class="input-text" name="poke_name">
-                  </div>
-                </div>
-          
-          
-   
-              </div>
-
-              <div class="main3">
-
-                <div class="name-box1">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Generation
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <div class="formRight">
-                  
-                      <select id="leadType1" class="box2" name="Generation">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                      </select>
-                  </div>
-                  </div>
-                </div>
-
-                <div class="name-box1">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Type
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <div class="formRight">
-                  
-                      <select id="leadType2" class="box2" name="Type">
-                        <option value="Grass">Grass</option>
-                        <option value="Fire">Fire</option>
-                        <option value="Water">Water</option>
-                        <option value="Bug">Bug</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Poison">Poison</option>
-                        <option value="Electric">Electric</option>
-                        <option value="Ground">Ground</option>
-                        <option value="Fairy">Fairy</option>
-                        <option value="Fighting">Fighting</option>
-                        <option value="Psychic">Psychic</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Ghost">Ghost</option>
-                        <option value="Ice">Ice</option>
-                        <option value="Dragon">Dragon</option>
-                        <option value="Dark">Dark</option>
-                        <option value="Steel">Steel</option>
-                        <option value="Flying">Flying</option>
-                      </select>
-                  </div>
-                  </div>
-                </div>
-  
-                <div class="name-box1">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Sub-Type
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <div class="formRight">
-                  
-                      <select id="leadType" class="box2" name="SubType">
-                        <option value="(main)">(main)</option>
-                        <option value="Flying">Flying</option>
-                        <option value="Ground">Ground</option>
-                        <option value="Poison">Poison</option>
-                        <option value="Psychic">Psychic</option>
-                        <option value="Fighting">Fighting</option>
-                        <option value="Grass">Grass</option>
-                        <option value="Fairy">Fairy</option>
-                        <option value="Steel">Steel</option>
-                        <option value="Dark">Dark</option>
-                        <option value="Dragon">Dragon</option>
-                        <option value="Ice">Ice</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Water">Water</option>
-                        <option value="Ghost">Ghost</option>
-                        <option value="Fire">Fire</option>
-                        <option value="Electric">Electric</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Bug">Bug</option>
-                      </select>
-                  </div>
-                  </div>
-                </div>
-
-                
-                
-    
-              </div>
-
-              <div class="gen_gap">
-                  
-              </div>
-  
-              <div class="main3">
-  
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      HP
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="HP">
-                  </div>
-                </div>
-  
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Attack
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="Attack">
-                  </div>
-                </div>
-
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Defense
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="Defense">
-                  </div>
-                </div>
-                
-    
-              </div>
-  
-              <div class="main3">
-  
-
-  
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Sp. Attack
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="Sp_Attack">
-                  </div>
-                </div>
-
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Sp. Defense
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="Sp_Defense">
-                  </div>
-                </div>
-  
-                <div class="hp-box">
-                  <div class="input-title">
-                    <div class="title-text">
-                      Speed
-                    </div>
-                  </div>
-                  <div class="input-main">
-                    <input type="number" class="input-text" name="Speed">
-                  </div>
-                </div>
-    
-              </div>
-  
-              
-  
-  
-
-
-              <div class="main5">
-                <div class="submit-box">
-                  <div class="submit-title">
-                    <input type="submit" class='submit-button'>
-                    <div class="submit-text">
-                      
-                      Submit
-                    </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-
-              
-
-  
-              
-  
-              
-  
+{% block content %}
+<main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Legendary Pokémon<br>Checker</h1>
+            <p>Discover the legendary status of any Pokémon using our advanced AI models</p>
+            <div class="hero-buttons">
+                <a href="#checker-form" class="btn btn-primary">
+                    <i class="fas fa-crown"></i>
+                    Start Checking
+                </a>
+                <a href="#how-it-works" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    How it Works
+                </a>
+            </div>
         </div>
-      </div>
-
-      <!-- this is nav bar -->
-      <!-- This is nav bar     -->
-
-      <nav>
-        <ul>
-            <li>
-                <a href="home.html" class="logo">
-                    
-                    <img src="/static/images/pokeball.png" alt="" width="60" height="60">
-                    <span class="nav-item">PokeDex</span>
-                </a>
-            </li>
-            <li>
-                <a href="home.html">
-                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
-                    <span class="nav-item">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="legendary_checker.html">
-                    <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
-                    <span class="nav-item">Legendary Checker</span>
-                </a>
-            </li>
-            <li>
-                <a href="pokemon_database.html">
-                    <i class="fa fa-id-badge fa-2x" aria-hidden="true"></i>
-                    <span class="nav-item">Pokemon Database</span>
-                </a>
-            </li>
-    
-            <li>
-                <a href="pokemon_comparator.html">
-                    <i class="fa fa-trophy fa-2x" aria-hidden="true"></i>
-                    <span class="nav-item">Pokemon Comparator</span>
-                </a>
-            </li>
-    
-
-        </ul>
-    </nav>
-
-    <div class="results">
-      <a href="#overlay" id="open-overlay">Results</a>
-    </div>
-
-
-
-    <!-- this is results -->
-
-<div id="overlay">
-
-  
-  <div class="close-btn">×</div>
-  <div class="main_card">
-    <div class="card">
-
-
-        <div class="result_selector">
-            <form name="formid" >
-                <select id="form_selector" name="dd1select" onchange="getdd1()">
-                  <option></option>
-                  {% for op in optionlist %}
-                  <option value={{op}}>{{op}}</option>
-                  {% endfor %}
-                  
-                </select>
-              </form>
+        <div class="hero-image">
+            {% if legendary_pokemon %}
+                <img src="{{ legendary_pokemon.image }}" alt="{{ legendary_pokemon.name }}" class="pokemon-img">
+                <p class="pokemon-name">{{ legendary_pokemon.name }}</p>
+            {% endif %}
         </div>
-        
+    </section>
 
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+                <h3>Enter Stats</h3>
+                <p>Input your Pokémon's stats and characteristics</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI Analysis</h3>
+                <p>Our AI models analyze the data</p>
+            </div>
+            <div class="step-card">
+                <div class="step-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Get Results</h3>
+                <p>Receive detailed legendary status prediction</p>
+            </div>
+        </div>
+    </section>
 
-
-        <div class="card_front">
-            <div id="result_name"> Ivysaur </div>
-            <img id="result_pic" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png">
-            <div class="circle"></div>
-            <div id="stat_header"> Stats </div>
-            <div id="stats_box">
-                <div id="result_box">
-                    <div id="stat_title">HP</div>
-                    <div id="result_hp">60</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Speed</div>
-                    <div id="result_speed">60</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Attack</div>
-                    <div id="result_attack">62</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Sp.Attack</div>
-                    <div id="result_special_attack">80</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Defense</div>
-                    <div id="result_defense">62</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Sp.Defense</div>
-                    <div id="result_special_defense">80</div>
-                </div>                  
+    <!-- Check Your Pokemon Section -->
+    <section id="checker-form" class="checker-form">
+        <h2>Check Your Pokemon</h2>
+        <form action="/legendary_output" method="post" class="pokemon-form">
+            <!-- Pokemon Name Input with Search Icon -->
+            <div class="form-group name-group">
+                <label for="poke_name">
+                    <i class="fas fa-search"></i>
+                    Pokemon Name
+                </label>
+                <input type="text" id="poke_name" name="poke_name" required 
+                       placeholder="Enter Pokemon name" class="form-input">
             </div>
 
-            <div id="stats_box1">
-                <div id="result_box">
-                    <div id="stat_title">Type</div>
-                    <div id="result_type">Grass</div>
+            <!-- Stats Grid with Modern Layout -->
+            <div class="stats-grid">
+                <!-- Base Stats Section -->
+                <div class="stats-section">
+                    <h3><i class="fas fa-chart-bar"></i> Base Stats</h3>
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="HP">
+                                <i class="fas fa-heart"></i>
+                                HP
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="HP" name="HP" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Attack">
+                                <i class="fas fa-fist-raised"></i>
+                                Attack
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="Attack" name="Attack" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="Defense">
+                                <i class="fas fa-shield-alt"></i>
+                                Defense
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="Defense" name="Defense" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Speed">
+                                <i class="fas fa-running"></i>
+                                Speed
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="Speed" name="Speed" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats-row">
+                        <div class="form-group">
+                            <label for="Sp_Attack">
+                                <i class="fas fa-bolt"></i>
+                                Sp. Attack
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="Sp_Attack" name="Sp_Attack" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Sp_Defense">
+                                <i class="fas fa-shield-alt"></i>
+                                Sp. Defense
+                            </label>
+                            <div class="input-with-range">
+                                <input type="number" id="Sp_Defense" name="Sp_Defense" required min="1" max="255" 
+                                       placeholder="1-255" class="form-input stat-input">
+                                <div class="range-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="result_box">
-                    <div id="stat_title">Sub-Type</div>
-                    <div id="result_subtype">Poison</div>
+
+                <!-- Pokemon Details Section -->
+                <div class="details-section">
+                    <h3><i class="fas fa-info-circle"></i> Pokemon Details</h3>
+                    <div class="form-group">
+                        <label for="Generation">
+                            <i class="fas fa-code-branch"></i>
+                            Generation
+                        </label>
+                        <select id="Generation" name="Generation" required class="form-select">
+                            <option value="" disabled selected>Select Generation</option>
+                            {% for i in range(1, 9) %}
+                                <option value="{{ i }}">Generation {{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Type">
+                            <i class="fas fa-fire"></i>
+                            Primary Type
+                        </label>
+                        <select id="Type" name="Type" required class="form-select type-select">
+                            <option value="" disabled selected>Select Type</option>
+                            {% for type in ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"] %}
+                                <option value="{{ type }}">{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="SubType">
+                            <i class="fas fa-water"></i>
+                            Secondary Type (Optional)
+                        </label>
+                        <select id="SubType" name="SubType" class="form-select type-select">
+                            <option value="None">None</option>
+                            {% for type in ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"] %}
+                                <option value="{{ type }}">{{ type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-                <div id="result_box">
-                    <div id="stat_title">Generation</div>
-                    <div id="result_gen">1</div>
-                </div>
-                <div id="result_box">
-                    <div id="stat_title">Legendary</div>
-                    <div id="result_legend">No</div>
-                </div>
-                      
             </div>
 
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-crown"></i>
+                <span>Check Legendary Status</span>
+                <div class="btn-hover-effect"></div>
+            </button>
+        </form>
 
-
-            <div id="stats_special_box"></div>
-            
-            
+        <!-- Enhanced Results Container -->
+        {% if predictions %}
+        <div class="results-container {% if condition %}legendary{% endif %}">
+            <div class="result-header">
+                <div class="result-icon">
+                    <i class="fas {% if condition %}fa-crown{% else %}fa-times-circle{% endif %}"></i>
+                </div>
+                <h3>{{ predictions }}</h3>
+            </div>
+            {% if result %}
+            <div class="model-results">
+                {% for model, confidence in result.items() %}
+                <div class="model-card">
+                    <div class="model-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>{{ model }}</h4>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: {{ confidence }}%"></div>
+                    </div>
+                    <p class="confidence">{{ confidence }}% Confidence</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
-        
-        
-    </div>
-
-    <div class="card1">
-        <div class="card_front">
-            <table class="fl-table">
-                <thead>
-                <tr>
-                    <th>Algorithm</th>
-                    <th>Confidence</th>
-                </tr>
-                </thead>
-                <tbody id="mytable-body">
-
-                </tbody>
-            </table>
-            <script>
-                // var array ={"1":1,"2":2,"3":3,"4":4,"5":5,"6":6}
-
-                // maketable(array)
-
-                // function maketable(data){
-                //     var table=document.getElementById('mytable')
-                //     for(var i=0;i<data.length;i++){
-                //         console.log[data[i]]
-                //         var row=`<tr>
-                //                     <td>1</td>
-                //                 </tr>`
-                //         table.innerHTML+=row
-                //     }
-                // }
-
-
-                var array = {"1":1},
-                    tr;
-
-                for ((key, value) in array) {
-                    var td = document.createElement('td');
-                    var td1 = document.createElement('td');
-                    if (!(value % 1)) {
-                        tr = document.createElement('tr');
-                        document.getElementById('mytable').appendChild(tr);
-                        
-                    }
-                    td.appendChild(document.createTextNode(key));
-                    td1.appendChild(document.createTextNode(i));
-                    tr.appendChild(td);
-                    tr.appendChild(td1);
-//Do stuff where key would be 0 and value would be the object
-                    }
-
-
-
-
-            </script>
-        </div>
-    </div>
-</div>
-
-</div>
-<div id="mask" onclick="document.location='#';"></div> <!-- the only javascript -->
-
- 
-<script src="/static/js/legendary.js"></script>   
-      
-    </body>
-
-    <script>
-      
-    var parsed = {{prediction|safe}};
-      
-      // var parsed1= JSON.parse({{prediction}})
-    </script>
-
-    <script>
-        var text = "{{condition}}";
-
-        if(text=="False"){
-          swal("{{predictions}}", "", "error");
-
-        }
-        if(text=="True")
-        {
-          swal("{{predictions}}", "", "success");
-        }
-    </script>
-
-</html>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

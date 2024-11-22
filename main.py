@@ -2,6 +2,8 @@ from flask import Flask,request,render_template,redirect
 import pickle
 import pandas as pd
 import os
+import requests
+import random
 
 
 optionlist=[]
@@ -14,25 +16,81 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return render_template("home.html")
+    try:
+        # Get a random Pokemon ID (Gen 1-8: 1-898)
+        pokemon_id = random.randint(1, 898)
+        
+        # Fetch Pokemon data from PokeAPI
+        response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_id}')
+        if response.status_code == 200:
+            pokemon_data = response.json()
+            featured_pokemon = {
+                'name': pokemon_data['name'].title(),
+                'image': pokemon_data['sprites']['other']['official-artwork']['front_default']
+            }
+        else:
+            # Fallback to Pikachu if API call fails
+            featured_pokemon = {
+                'name': 'Pikachu',
+                'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+            }
+            
+    except Exception as e:
+        print(f"Error fetching Pokemon: {e}")
+        # Fallback to Pikachu if any error occurs
+        featured_pokemon = {
+            'name': 'Pikachu',
+            'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+        }
+    
+    return render_template("home.html", featured_pokemon=featured_pokemon, active_page='home')
 
 @app.route('/home.html')
 def home():
-    return render_template("home.html")
+    # Reuse the same logic for consistency
+    return hello_world()
 
 @app.route('/legendary_checker.html')
 def legendary():
-    return render_template("legendary_checker.html")
+    try:
+        # List of known legendary Pokemon IDs (you can expand this list)
+        legendary_ids = [144, 145, 146, 150, 151, 243, 244, 245, 249, 250, 251, 377, 378, 379, 380, 381, 382, 383, 384]
+        pokemon_id = random.choice(legendary_ids)
+        
+        # Fetch Pokemon data from PokeAPI
+        response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_id}')
+        if response.status_code == 200:
+            pokemon_data = response.json()
+            legendary_pokemon = {
+                'name': pokemon_data['name'].title(),
+                'image': pokemon_data['sprites']['other']['official-artwork']['front_default']
+            }
+        else:
+            # Fallback to Mewtwo if API call fails
+            legendary_pokemon = {
+                'name': 'Mewtwo',
+                'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png'
+            }
+            
+    except Exception as e:
+        print(f"Error fetching Pokemon: {e}")
+        # Fallback to Mewtwo if any error occurs
+        legendary_pokemon = {
+            'name': 'Mewtwo',
+            'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png'
+        }
+    
+    return render_template("legendary_checker.html", legendary_pokemon=legendary_pokemon, active_page='legendary')
 
 @app.route('/pokemon_database.html')
 def pokemon_database():
-    return render_template("pokemon_database.html")
+    return render_template("pokemon_database.html", active_page='database')
 
 
 
 @app.route('/pokemon_comparator.html')
 def pokemon_comparator():
-    return render_template("pokemon_comparator.html")
+    return render_template("pokemon_comparator.html", active_page='comparator')
 
 
 @app.route('/legendary_output',methods=['POST','GET'])

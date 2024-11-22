@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PokeDex{% endblock %}</title>
+    
+    <!-- Common Fonts and Icons -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600,700' rel='stylesheet'>
+    <link rel="icon" href="/static/images/pokeball.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/common.css">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Common Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="/static/images/pokeball.png" alt="PokeDex Logo" class="nav-logo">
+            <span>PokeDex</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
+            <li><a href="legendary_checker.html" class="{% if active_page == 'legendary' %}active{% endif %}">Legendary Checker</a></li>
+            <li><a href="pokemon_database.html" class="{% if active_page == 'database' %}active{% endif %}">Database</a></li>
+            <li><a href="pokemon_comparator.html" class="{% if active_page == 'comparator' %}active{% endif %}">Comparator</a></li>
+        </ul>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Content Block -->
+    {% block content %}{% endblock %}
+
+    <!-- Common Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li>
+                        <i class="fas fa-crown"></i>
+                        <a href="legendary_checker.html">Legendary Checker</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-database"></i>
+                        <a href="pokemon_database.html">Pokemon Database</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-balance-scale"></i>
+                        <a href="pokemon_comparator.html">Pokemon Comparator</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h4>Connect With Me</h4>
+                <div class="social-links">
+                    <a href="https://github.com/sunnycreado" target="_blank" rel="noopener noreferrer" class="social-btn github">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sunnycreado/" target="_blank" rel="noopener noreferrer" class="social-btn linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PokeDex. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Common Scripts -->
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 
