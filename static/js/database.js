@@ -153,11 +153,12 @@ window.PokemonDB = (() => {
                     <h4 class="stats-title">Base Stats</h4>
                     <div class="stats-container">
                         ${pokemon.stats.map(stat => {
-                            const percentage = (stat.value/255)*100;
+                            const statName = formatStatName(stat.name);
+                            const percentage = Math.min((stat.value / 255) * 100, 100);
                             return `
                                 <div class="stat-row">
                                     <div class="stat-info">
-                                        <span class="stat-label">${formatStatName(stat.name)}</span>
+                                        <span class="stat-label">${statName}</span>
                                         <span class="stat-value">${stat.value}</span>
                                     </div>
                                     <div class="stat-bar-container">
