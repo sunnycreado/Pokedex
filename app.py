@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import requests
 import random
+import joblib
 
 optionlist = []
 prediction = {}
@@ -124,27 +125,31 @@ def legendary_output():
     user_input = pd.DataFrame(user_input, index=[0])
     user_input = user_input[['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'Generation', 'Type 1', 'Type 2', "Total"]]
 
-    label1sav = './static/models/label1.sav'
-    label2sav = './static/models/label2.sav'
-    label1 = pickle.load(open(label1sav, 'rb'))
-    label2 = pickle.load(open(label2sav, 'rb'))
-    user_input["Type 1"] = label1.transform(user_input["Type 1"])
-    user_input["Type 2"] = label2.transform(user_input["Type 2"])
+    # Load models only when needed
+    try:
+        label1 = joblib.load('./static/models/label1.sav')
+        label2 = joblib.load('./static/models/label2.sav')
+        user_input["Type 1"] = label1.transform(user_input["Type 1"])
+        user_input["Type 2"] = label2.transform(user_input["Type 2"])
 
-    filename = './static/models/finalized_model.sav'
-    loaded_model = pickle.load(open(filename, 'rb'))
-    condition = loaded_model.predict(user_input)[0]
+        model = joblib.load('./static/models/finalized_model.sav')
+        condition = model.predict(user_input)[0]
 
-    path = "./static/compare_models"
-    dir_list = os.listdir(path)
-    results = {}
-    for i in dir_list:
-        compare_filename = path + "/" + i
-        loaded_model = pickle.load(open(compare_filename, 'rb'))
-        accuracy = loaded_model.predict_proba(user_input)[0]
-        accuracy = '{:.2f}%'.format(max(accuracy * 100))
-        classifier = i.replace('.sav', '')
-        results[classifier] = accuracy
+        # Load comparison models more efficiently
+        results = {}
+        for model_file in os.listdir("./static/compare_models"):
+            if model_file.endswith('.sav'):
+                model_path = os.path.join("./static/compare_models", model_file)
+                model = joblib.load(model_path)
+                proba = model.predict_proba(user_input)[0]
+                accuracy = '{:.2f}%'.format(max(proba * 100))
+                classifier = model_file.replace('.sav', '')
+                results[classifier] = accuracy
+
+    except Exception as e:
+        print(f"Error loading models: {e}")
+        return render_template("legendary_checker.html", 
+                             error="Unable to process request. Please try again.")
 
     stats = {
         'hp': HP,

@@ -5,19 +5,16 @@
             "src": "app.py",
             "use": "@vercel/python",
             "config": {
-                "maxLambdaSize": "15mb",
-                "runtime": "python3.9",
-                "excludeFiles": "{.next,.vercel,*.cache,node_modules,public,static/models}/**.sav"
+                "maxLambdaSize": "50mb",
+                "runtime": "python3.9"
             }
         }
     ],
-    "functions": {
-        "api/**": {
-            "memory": 1024,
-            "maxDuration": 10
-        }
-    },
     "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
         {
             "src": "/(.*)",
             "dest": "app.py"

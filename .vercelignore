@@ -3,7 +3,13 @@ __pycache__
 .env
 venv
 .vercel
-.next
+.git
+.gitignore
+README.md
+*.log
 node_modules
 *.cache
-static/models/*.sav 
+tests/
+docs/
+*.txt
+!requirements.txt 
