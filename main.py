@@ -84,7 +84,34 @@ def legendary():
 
 @app.route('/pokemon_database.html')
 def pokemon_database():
-    return render_template("pokemon_database.html", active_page='database')
+    try:
+        # Get a random Pokemon ID (Gen 1-8: 1-898)
+        pokemon_id = random.randint(1, 898)
+        
+        # Fetch Pokemon data from PokeAPI
+        response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_id}')
+        if response.status_code == 200:
+            pokemon_data = response.json()
+            featured_pokemon = {
+                'name': pokemon_data['name'].title(),
+                'image': pokemon_data['sprites']['other']['official-artwork']['front_default']
+            }
+        else:
+            # Fallback to Pikachu if API call fails
+            featured_pokemon = {
+                'name': 'Pikachu',
+                'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+            }
+            
+    except Exception as e:
+        print(f"Error fetching Pokemon: {e}")
+        # Fallback to Pikachu if any error occurs
+        featured_pokemon = {
+            'name': 'Pikachu',
+            'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+        }
+    
+    return render_template("pokemon_database.html", featured_pokemon=featured_pokemon, active_page='database')
 
 
 

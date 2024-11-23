@@ -1,112 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
+{% block title %}PokeDex - Pokemon Database{% endblock %}
 
-<head>
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/database.css">
+<link rel="stylesheet" type="text/css" href="/static/styles/shared-mobile.css">
+{% endblock %}
 
-<meta charset="utf-8">
-<title>PokeDex</title>
+{% block content %}
+<main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pokémon<br>Database</h1>
+            <p>Explore comprehensive information about all Pokémon species</p>
+            <div class="hero-buttons">
+                <a href="#database-section" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                    Search Pokemon
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            {% if featured_pokemon %}
+                <img src="{{ featured_pokemon.image }}" alt="{{ featured_pokemon.name }}" class="pokemon-img">
+                <p class="pokemon-name">{{ featured_pokemon.name }}</p>
+            {% endif %}
+        </div>
+    </section>
 
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700"> -->
-<!-- https://fonts.google.com/specimen/Roboto -->
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<link rel = "icon" href = "/static/images/pokeball.png" type = "image/x-icon">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-<!-- <link rel="stylesheet" href="css/fontawesome.min.css"> -->
-<link rel="stylesheet" type="text/css" href="/static/styles/pokedex-style.css">
-<meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <!-- How to Use Section -->
+    <section id="how-to-use" class="features">
+        <h2>How to Use</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Search</h3>
+                <p>Search for any Pokémon by name, type, or ID number</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <h3>Filter</h3>
+                <p>Use advanced filters to find Pokémon by generation, type, or stats</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h3>Details</h3>
+                <p>View detailed information including stats, abilities, and evolution chain</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- Database Section -->
+    <section id="database-section" class="database-section">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search Pokémon..." id="pokemon-search">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="filter-btn" id="filters-toggle">
+                    <i class="fas fa-filter"></i>
+                    Filters
+                </button>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filter-panel">
+                <div class="filter-section">
+                    <h4>Type</h4>
+                    <div class="type-buttons">
+                        <button class="type-btn" data-type="water">Water</button>
+                        <button class="type-btn" data-type="fire">Fire</button>
+                        <button class="type-btn" data-type="grass">Grass</button>
+                        <!-- Add other type buttons as needed -->
+                    </div>
+                </div>
+                <div class="filter-section">
+                    <h4>Generation</h4>
+                    <select id="generation-select" class="filter-select">
+                        <option value="all">All Generations</option>
+                        <option value="1">Generation I</option>
+                        <option value="2">Generation II</option>
+                        <option value="3">Generation III</option>
+                        <option value="4">Generation IV</option>
+                        <option value="5">Generation V</option>
+                        <option value="6">Generation VI</option>
+                        <option value="7">Generation VII</option>
+                        <option value="8">Generation VIII</option>
+                    </select>
+                </div>
+                <div class="filter-section">
+                    <h4>Sort By</h4>
+                    <select id="sort-select" class="filter-select">
+                        <option value="number">Number</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="hp">HP</option>
+                        <option value="attack">Attack</option>
+                        <option value="defense">Defense</option>
+                        <option value="speed">Speed</option>
+                    </select>
+                </div>
+                <button class="clear-filters-btn" id="clear-filters">Clear Filters</button>
+            </div>
+        </div>
+        
+        <div class="loading-spinner" id="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading Pokémon...</p>
+        </div>
+        
+        <div class="pokemon-grid" id="pokemon-grid">
+            <!-- Pokemon cards will be dynamically added here -->
+        </div>
+    </section>
+</main>
 
+<button id="mobile-filter-toggle" class="mobile-filter-btn">
+    <i class="fas fa-filter"></i>
+</button>
 
-</head>
-
-<body>
-
-<!-- This is the pokedex UI -->
-
-<div class="main-logo">
-
-    <img class="picture" src="/static/images/pokemon-logo.png" class="card__image" alt="" />
-  
-  </div> 
-<h1 id="heading"></h1>
-<h2 >Generations</h2>
-<div class="button-container">
-<button id="left-btn"><i class="fas fa-caret-left"></i></i></button>
-<div class="pagination current-page">1</div>
-<div class="pagination">2</div>
-<div class="pagination">3</div>
-<div class="pagination">4</div>
-<div class="pagination">5</div>
-<div class="pagination">6</div>
-<button id="right-btn"><i class="fas fa-caret-right"></i></button>
-</div>
-<div class="pokemon-container"></div>
-
-</body>
-
-<script src="/static/js/app.js"></script>
-
-<!-- This is nav bar     -->
-
-<nav>
-    <ul>
-        <li>
-            <a href="home.html" class="logo">
-                
-                <img src="/static/images/pokeball.png" alt="" width="60" height="60">
-                <span class="nav-item">PokeDex</span>
-            </a>
-        </li>
-        <li>
-            <a href="home.html">
-                <i class="fa fa-home " aria-hidden="true"></i>
-                <span class="nav-item">Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="legendary_checker.html">
-                <i class="fa fa-check-square " aria-hidden="true"></i>
-                <span class="nav-item">Legendary Checker</span>
-            </a>
-        </li>
-        <li>
-            <a href="pokemon_database.html">
-                <i class="fa fa-id-badge " aria-hidden="true"></i>
-                <span class="nav-item">Pokemon Database</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="pokemon_comparator.html">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
-                <span class="nav-item">Pokemon Comparator</span>
-            </a>
-        </li>
-
-
-    </ul>
-</nav> 
-
-
-
-
-
-
-
-
-
-
-</body>
-
-
-
-
-
-
-
-</html>
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/database.js') }}"></script>
+{% endblock %}
+{% endblock %}
