@@ -6,7 +6,11 @@ services:
     startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.7
+        value: 3.11.10
       - key: FLASK_ENV
         value: production
+      - key: SKLEARN_ALLOW_DEPRECATED_SKLEARN_PACKAGE_INSTALL
+        value: "True"
+      - key: JOBLIB_MULTIPROCESSING
+        value: "0"
     autoDeploy: true 
