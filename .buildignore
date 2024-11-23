@@ -1,0 +1,9 @@
+*.pyc
+__pycache__
+.git
+.env
+venv
+node_modules
+tests/
+docs/
+*.log 
