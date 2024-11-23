@@ -580,4 +580,44 @@ body {
     font-size: 1.1rem;
     grid-column: 1 / -1;
 }
+
+/* Mobile-specific fixes for database page */
+@media (max-width: 768px) {
+    .pokemon-container {
+        padding-top: 120px; /* Space for fixed header and search */
+    }
+
+    .search-box-container {
+        position: fixed;
+        top: 60px; /* Position below header */
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 10px 20px;
+        background: var(--background-color);
+        z-index: 100;
+        margin: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-box {
+        width: 90%;
+        max-width: 400px;
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+
+    /* Remove previous grid changes to keep original card layout */
+    .pokemon-grid {
+        padding: 10px;
+        margin-top: 0; /* Remove extra margin since we handled it in container */
+    }
+
+    /* Ensure proper stacking context */
+    .navbar {
+        z-index: 1000;
+    }
+}
  
