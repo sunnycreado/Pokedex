@@ -200,6 +200,6 @@ def legendary_output():
     return render_template("legendary_checker.html",predictions=output,condition=condition,optionlist=optionlist,prediction=prediction,result=results)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
 
 
