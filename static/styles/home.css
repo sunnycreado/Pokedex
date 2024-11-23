@@ -138,6 +138,7 @@ body {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 3rem;
+    text-align: center;
 }
 
 .features-grid {
@@ -154,6 +155,10 @@ body {
     border-radius: 15px;
     box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .feature-card:hover {
@@ -178,24 +183,34 @@ body {
 
 .feature-card h3 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     color: var(--primary-color);
+    margin: 1rem 0;
+    text-align: center;
 }
 
 .feature-card p {
+    font-size: 1rem;
+    line-height: 1.5;
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    text-align: center;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .feature-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
     text-decoration: none;
+    border-radius: 25px;
     font-weight: 500;
     transition: all 0.3s ease;
+    margin-top: auto;
 }
 
 .feature-link:hover {
@@ -215,32 +230,86 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 6rem 5% 3rem;
-        min-height: auto;
+        padding: 5rem 1rem 3rem;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        padding: 0;
+        width: 100%;
     }
 
     .hero h1 {
-        font-size: 3rem;
+        font-size: 2.2rem;
+        word-wrap: break-word;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        text-align: center;
+        max-width: 280px;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        width: 100%;
         justify-content: center;
+        padding: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .hero-image {
-        margin-top: 3rem;
-        align-items: center;
-        padding-right: 0;
+        margin-top: 1rem;
     }
 
     .pokemon-img {
-        max-width: 280px;
+        width: 220px;
+        height: auto;
+    }
+
+    .pokemon-name {
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
+    }
+
+    /* Enhanced Features Section */
+    .features {
+        padding: 3rem 1rem;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .features h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        text-align: center;
     }
 
     .features-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .feature-card {
+        width: 100%;
+        margin: 0;
+    }
+
+    .feature-icon {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-link {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
     }
 } 

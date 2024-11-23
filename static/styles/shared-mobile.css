@@ -1,0 +1,199 @@
+@media (max-width: 768px) {
+    /* Hero Section - Shared between home and legendary */
+    .hero {
+        min-height: calc(100vh - 60px);
+        padding: 4rem 1.5rem 2rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .hero-content {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        word-wrap: break-word;
+        color: var(--primary-color);
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        max-width: 280px;
+        margin: 0 auto 1.5rem;
+        opacity: 0.8;
+        text-align: center;
+        line-height: 1.4;
+        width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 0.8rem;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem;
+        font-size: 0.95rem;
+        height: 45px;
+        border-radius: 8px;
+    }
+
+    .hero-image {
+        width: 100%;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pokemon-img {
+        width: 180px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .pokemon-name {
+        font-size: 1.1rem;
+        margin-top: 0.8rem;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    /* Quick Links Section */
+    .quick-links {
+        text-align: center;
+        padding: 2rem 1rem;
+        width: 100%;
+    }
+
+    .quick-links h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: var(--primary-color);
+    }
+
+    /* Features/How It Works Section */
+    .features {
+        padding: 2.5rem 1.5rem;
+        width: 100%;
+        overflow: hidden;
+        background: white;
+    }
+
+    .features h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: var(--primary-color);
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        width: 100%;
+        padding: 0;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+        width: 100%;
+        margin: 0;
+        background: white;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+    }
+
+    /* Connect Section */
+    .connect-section {
+        text-align: center;
+        padding: 2rem 1rem;
+        width: 100%;
+    }
+
+    .connect-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: var(--primary-color);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    /* Form Elements - For Legendary Page */
+    .checker-form {
+        padding: 2rem 1rem;
+        width: 100%;
+    }
+
+    .pokemon-form {
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .stats-section,
+    .details-section {
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        max-width: 280px;
+        height: 45px;
+        margin: 1.5rem auto 0;
+    }
+
+    /* Results Section - For Legendary Page */
+    .results-container {
+        width: calc(100% - 2rem);
+        margin: 1.5rem 1rem;
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+
+    .model-results {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .model-card {
+        padding: 1.2rem;
+    }
+} 
