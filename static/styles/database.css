@@ -177,7 +177,7 @@ body {
 }
 
 .search-container {
-    max-width: 1200px;
+    max-width: 600px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
@@ -190,6 +190,7 @@ body {
     padding: 1rem;
     border-radius: 12px;
     box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
 }
 
 .search-box input {
@@ -207,30 +208,19 @@ body {
     box-shadow: 0 0 0 3px rgba(59, 76, 202, 0.1);
 }
 
-.search-btn, .filter-btn {
+.search-btn {
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-}
-
-.search-btn {
     background: var(--primary-color);
     color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.filter-btn {
-    background: var(--background-color);
-    color: var(--text-color);
-}
-
-.search-btn:hover, .filter-btn:hover {
+.search-btn:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 76, 202, 0.2);
 }
 
 /* Filter Panel */
@@ -579,5 +569,15 @@ body {
 
 .pokemon-card {
     animation: fadeIn 0.6s ease-out;
+}
+
+/* Add this to your existing CSS */
+.no-results {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
 }
  
