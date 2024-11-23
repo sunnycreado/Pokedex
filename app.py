@@ -5,11 +5,21 @@ import os
 import requests
 import random
 import joblib
+from functools import lru_cache
 
 optionlist = []
 prediction = {}
 
 app = Flask(__name__)
+
+@lru_cache(maxsize=None)
+def load_model(model_path):
+    try:
+        with open(model_path, 'rb') as f:
+            return pickle.load(f)
+    except Exception as e:
+        print(f"Error loading model {model_path}: {e}")
+        return None
 
 @app.route('/')
 def hello_world():
@@ -125,31 +135,34 @@ def legendary_output():
     user_input = pd.DataFrame(user_input, index=[0])
     user_input = user_input[['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'Generation', 'Type 1', 'Type 2', "Total"]]
 
-    # Load models only when needed
-    try:
-        label1 = joblib.load('./static/models/label1.sav')
-        label2 = joblib.load('./static/models/label2.sav')
-        user_input["Type 1"] = label1.transform(user_input["Type 1"])
-        user_input["Type 2"] = label2.transform(user_input["Type 2"])
+    # Load models with caching
+    label1 = load_model('./static/models/label1.sav')
+    label2 = load_model('./static/models/label2.sav')
+    if not label1 or not label2:
+        raise Exception("Failed to load label encoders")
+        
+    user_input["Type 1"] = label1.transform(user_input["Type 1"])
+    user_input["Type 2"] = label2.transform(user_input["Type 2"])
 
-        model = joblib.load('./static/models/finalized_model.sav')
-        condition = model.predict(user_input)[0]
+    model = load_model('./static/models/finalized_model.sav')
+    if not model:
+        raise Exception("Failed to load prediction model")
+        
+    condition = model.predict(user_input)[0]
 
-        # Load comparison models more efficiently
-        results = {}
-        for model_file in os.listdir("./static/compare_models"):
+    # Load comparison models efficiently
+    results = {}
+    model_dir = "./static/compare_models"
+    if os.path.exists(model_dir):
+        for model_file in os.listdir(model_dir):
             if model_file.endswith('.sav'):
-                model_path = os.path.join("./static/compare_models", model_file)
-                model = joblib.load(model_path)
-                proba = model.predict_proba(user_input)[0]
-                accuracy = '{:.2f}%'.format(max(proba * 100))
-                classifier = model_file.replace('.sav', '')
-                results[classifier] = accuracy
-
-    except Exception as e:
-        print(f"Error loading models: {e}")
-        return render_template("legendary_checker.html", 
-                             error="Unable to process request. Please try again.")
+                model_path = os.path.join(model_dir, model_file)
+                model = load_model(model_path)
+                if model:
+                    proba = model.predict_proba(user_input)[0]
+                    accuracy = '{:.2f}%'.format(max(proba * 100))
+                    classifier = model_file.replace('.sav', '')
+                    results[classifier] = accuracy
 
     stats = {
         'hp': HP,
