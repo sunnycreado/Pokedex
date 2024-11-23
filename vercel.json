@@ -3,7 +3,7 @@
     "builds": [
         {
             "src": "app.py",
-            "use": "@vercel/python"
+            "use": "@vercel/python@3.1.0"
         },
         {
             "src": "static/**",
@@ -25,6 +25,7 @@
     ],
     "env": {
         "PYTHONPATH": ".",
-        "FLASK_ENV": "production"
+        "FLASK_ENV": "production",
+        "PYTHON_VERSION": "3.9"
     }
 } 
