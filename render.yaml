@@ -13,4 +13,6 @@ services:
         value: "True"
       - key: JOBLIB_MULTIPROCESSING
         value: "0"
+      - key: PIP_NO_CACHE_DIR
+        value: "true"
     autoDeploy: true 
