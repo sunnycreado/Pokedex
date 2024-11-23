@@ -115,9 +115,34 @@ def pokemon_database():
 
 
 
-@app.route('/pokemon_comparator.html')
-def pokemon_comparator():
-    return render_template("pokemon_comparator.html", active_page='comparator')
+# @app.route('/pokemon_comparator.html')
+# def pokemon_comparator():
+#     try:
+#         # Get a random Pokemon ID (Gen 1-8: 1-898)
+#         pokemon_id = random.randint(1, 898)
+#         
+#         # Fetch Pokemon data from PokeAPI
+#         response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_id}')
+#         if response.status_code == 200:
+#             pokemon_data = response.json()
+#             featured_pokemon = {
+#                 'name': pokemon_data['name'].title(),
+#                 'image': pokemon_data['sprites']['other']['official-artwork']['front_default']
+#             }
+#         else:
+#             featured_pokemon = {
+#                 'name': 'Pikachu',
+#                 'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+#             }
+#             
+#     except Exception as e:
+#         print(f"Error fetching Pokemon: {e}")
+#         featured_pokemon = {
+#             'name': 'Pikachu',
+#             'image': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'
+#         }
+#     
+#     return render_template("pokemon_comparator.html", featured_pokemon=featured_pokemon, active_page='comparator')
 
 
 @app.route('/legendary_output',methods=['POST','GET'])

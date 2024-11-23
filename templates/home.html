@@ -9,31 +9,31 @@
 
 {% block content %}
 <main class="main-content">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to <br>PokeDex</h1>
-            <p>Your ultimate companion for exploring the world of Pokémon</p>
-            <div class="hero-buttons">
-                <a href="legendary_checker.html" class="btn btn-primary">
-                    <i class="fas fa-crown"></i>
-                    Check Legendary Status
-                </a>
-                <a href="#features" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i>
-                    Learn More
-                </a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to <br>PokeDex</h1>
+                <p>Your ultimate companion for exploring the world of Pokémon</p>
+                <div class="hero-buttons">
+                    <a href="legendary_checker.html" class="btn btn-primary">
+                        <i class="fas fa-crown"></i>
+                        Check Legendary Status
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            {% if featured_pokemon %}
-                <img src="{{ featured_pokemon.image }}" alt="{{ featured_pokemon.name }}" class="pokemon-img">
-                <p class="pokemon-name">{{ featured_pokemon.name }}</p>
-            {% else %}
-                <img src="/static/images/pikachu.png" alt="Pikachu" class="pokemon-img">
-                <p class="pokemon-name">Pikachu</p>
-            {% endif %}
-        </div>
+            <div class="hero-image">
+                {% if featured_pokemon %}
+                    <img src="{{ featured_pokemon.image }}" alt="{{ featured_pokemon.name }}" class="pokemon-img">
+                    <p class="pokemon-name">{{ featured_pokemon.name }}</p>
+                {% else %}
+                    <img src="/static/images/pikachu.png" alt="Pikachu" class="pokemon-img">
+                    <p class="pokemon-name">Pikachu</p>
+                {% endif %}
+            </div>
     </section>
 
     <!-- Features Section -->
@@ -60,17 +60,6 @@
                 <a href="pokemon_database.html" class="feature-link">
                     <i class="fas fa-database"></i>
                     Pokemon Database
-                </a>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <h3>Pokemon Comparator</h3>
-                <p>Compare stats and abilities between different Pokémon</p>
-                <a href="pokemon_comparator.html" class="feature-link">
-                    <i class="fas fa-balance-scale"></i>
-                    Pokemon Comparator
                 </a>
             </div>
         </div>
